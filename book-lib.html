@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div class="mypanel"></div>
+
+    <script>
+    //$.getJSON('https://www.morgankweiss.com/img/bookData.json', function(data) {
+    //  const jsonString = '[{"isbn":"713424655-8","book_title":"Man Who Left His Will on Film,","author":"Esther Winkell"},{"isbn":"540937784-2","book_title":"Steel Trap, The","author":"Ardys Nulty"},{"isbn":"825552062-7","book_title":"I aionia epistrofi tou Antoni Paraskeva","author":"Susan Douty"}]';
+//
+// const obj = JSON.parse(jsonString);
+//
+// alert(jsonString);
+// alert(obj);
+//
+//         $(".mypanel").html(obj);
+$.getJSON('https://www.morgankweiss.com/img/bookData.json', function(data) {
+        console.log(data);
+
+
+        var text = `author: ${data.author},
+                    book_title: ${data.book_title},
+                    isbn: ${data.isbn}`
+
+        alert(text)
+        $(".mypanel").html(data);
+    });
+
+    </script>
+
+</body>
+</html>

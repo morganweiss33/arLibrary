@@ -35,8 +35,16 @@ var InfoTable = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape(par
 
 	for (var i=0; i < data.array.length;i++) {    
         //console.log("test");
-    InfoTable.AddRow({isbn:data.array[i].isbn, book_title:data.array[i].book_title, author:data.array[i].author});
+        if (data.array[i].shelf_number === 1)
+        {
+    InfoTable.AddRow({isbn:data.array[i].isbn, book_title:data.array[i].book_title, author:data.array[i].author, shelf_number:data.array[i].shelf_number, image:data.array[i].image, description:data.array[i].description});
 	}
-
-
+    }
 var result = InfoTable;
+
+/*
+result = Resources["InfoTableFunctions"].Sort({
+	t: InfoTable /* INFOTABLE ,
+	sortColumn: 'shelf_number'  /* STRING ,
+	ascending: true /* BOOLEAN 
+});*/

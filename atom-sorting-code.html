@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div class="mypanel"></div>
+      <button onclick="myFunction()">Sort</button>
+      <script>
+
+      $.getJSON('https://www.morgankweiss.com/img/bookData.json', function(data) {
+
+        var arr = [];
+        var text;
+                //console.log(data);
+                $(data).each(function(i,book){
+
+                  text = `AUTHOR LAST NAME: ${book.author_last}`
+                    arr.push(text + "<br><br>");
+                    console.log(arr);
+
+                    function displayArr() {
+                    document.getElementById("demo").innerHTML =
+                    arr.author_last + " " + arr.book_title + "<br>";
+                    //book[1].author_last + " " + book[1].book_title + "<br>" +
+                    //book[2].author_last + " " + book[2].book_title;
+                  }
+
+                  function myFunction() {
+                    arr.sort(function(a, b){
+                      var x = a.author_last.toLowerCase();
+                      var y = b.author_last.toLowerCase();
+                      if (x < y) {return -1;}
+                      if (x > y) {return 1;}
+                      return 0;
+                    });
+                    displayArr();
+                  }
+                });
+
+          $(".mypanel").html(arr);
+
+             });
+
+
+        </script>
+</body>
+</html>
